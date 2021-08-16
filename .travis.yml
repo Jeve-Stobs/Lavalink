@@ -1,3 +1,4 @@
+  
 language: java
 
 addons:
@@ -29,4 +30,3 @@ jobs:
         #for full sonar cloud blame information
         - "git fetch --unshallow"
       script:
-        - "./gradlew sonarqube -PincludeAnalysis"
