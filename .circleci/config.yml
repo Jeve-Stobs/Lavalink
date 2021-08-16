@@ -24,3 +24,6 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew bootJar 
+     
+    - get_artifacts:
+        path: ~/repo/LavalinkServer/build/libs/Lavalink.jar
