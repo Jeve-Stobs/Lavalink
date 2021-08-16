@@ -1,3 +1,7 @@
+# Artifacts build status
+
+[![CircleCI](https://circleci.com/gh/NezuChan/Lavalink/tree/dev.svg?style=svg)](https://circleci.com/gh/NezuChan/Lavalink/tree/dev)
+
 # Lavalink
 Standalone audio sending node based on Lavaplayer and JDA-Audio.
 Allows for sending audio without it ever reaching any of your shards.
