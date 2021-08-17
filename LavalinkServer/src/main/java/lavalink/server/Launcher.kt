@@ -47,36 +47,13 @@ object Launcher {
     val startTime = System.currentTimeMillis()
 
     private fun getVersionInfo(indentation: String = "\t", vanity: Boolean = true): String {
-        val appInfo = AppInfo()
-        val gitRepoState = GitRepoState()
-
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss z")
-                .withZone(ZoneId.of("UTC"))
-        val buildTime = dtf.format(Instant.ofEpochMilli(appInfo.buildTime))
-        val commitTime = dtf.format(Instant.ofEpochMilli(gitRepoState.commitTime * 1000))
-
-        val version = appInfo.version.takeUnless { it.startsWith("@") } ?: "Unknown"
-        val buildNumber = appInfo.buildNumber.takeUnless { it.startsWith("@") } ?: "Unofficial"
-
         return buildString {
             if (vanity) {
                 appendln()
                 appendln()
                 appendln(getVanity())
             }
-            if (!gitRepoState.isLoaded) {
-                appendln()
-                appendln("$indentation*** Unable to find or load Git metadata ***")
-            }
             appendln()
-            append("${indentation}Version:        "); appendln(version)
-            append("${indentation}Build:          "); appendln(buildNumber)
-            if (gitRepoState.isLoaded) {
-                append("${indentation}Build time:     "); appendln(buildTime)
-                append("${indentation}Branch          "); appendln(gitRepoState.branch)
-                append("${indentation}Commit:         "); appendln(gitRepoState.commitIdAbbrev)
-                append("${indentation}Commit time:    "); appendln(commitTime)
-            }
             append("${indentation}JVM:            "); appendln(System.getProperty("java.version"))
             append("${indentation}Lavaplayer      "); appendln(PlayerLibrary.VERSION)
         }
@@ -125,6 +102,5 @@ object Launcher {
                 }
         )
         sa.run(*args)
-        log.info("You can safely ignore the big red warning about illegal reflection. See https://github.com/freyacodes/Lavalink/issues/295")
     }
 }
