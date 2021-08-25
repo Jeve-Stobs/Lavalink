@@ -74,7 +74,7 @@ public class AudioLoaderRestHandler {
                 .put("isSeekable", audioTrack.isSeekable())
                 .put("position", audioTrack.getPosition())
                 .put("sourceName", audioTrack.getSourceManager() == null ? null : audioTrack.getSourceManager().getSourceName())
-                .put("thumbnail", trackInfo.artworkUrl.isNull() ? null : trackInfo.artworkUrl);
+                .put("thumbnail", trackInfo.artworkUrl.isNu? null : trackInfo.artworkUrl);
     }
 
     private JSONObject encodeLoadResult(LoadResult result) {
