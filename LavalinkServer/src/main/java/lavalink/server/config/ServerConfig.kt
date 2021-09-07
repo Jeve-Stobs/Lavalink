@@ -39,4 +39,5 @@ class ServerConfig {
     var isYoutubeSearchEnabled = true
     var isSoundcloudSearchEnabled = true
     var ratelimit: RateLimitConfig? = null
+    var gatewayVersion: String = "V4"
 }

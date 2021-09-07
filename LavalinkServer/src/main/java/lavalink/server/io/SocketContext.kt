@@ -31,7 +31,7 @@ import lavalink.server.player.Player
 import lavalink.server.config.ServerConfig
 import moe.kyokobot.koe.KoeClient
 import moe.kyokobot.koe.KoeEventAdapter
-import moe.kyokobot.koe.VoiceConnection
+import moe.kyokobot.koe.MediaConnection
 import moe.kyokobot.koe.VoiceServerInfo
 import org.json.JSONObject
 import org.slf4j.LoggerFactory
@@ -105,7 +105,7 @@ class SocketContext internal constructor(
     /**
      * Gets or creates a voice connection
      */
-    fun getVoiceConnection(player: Player): VoiceConnection {
+    fun getVoiceConnection(player: Player): MediaConnection {
         val guildId = player.guildId.toLong()
         var conn = koe.getConnection(guildId)
         if (conn == null) {
