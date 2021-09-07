@@ -1,5 +1,6 @@
 package lavalink.server.config
 
+import moe.kyokobot.koe.gateway.GatewayVersion;
 import moe.kyokobot.koe.KoeOptions
 import moe.kyokobot.koe.codec.udpqueue.UdpQueueFramePollerFactory
 import org.slf4j.Logger
