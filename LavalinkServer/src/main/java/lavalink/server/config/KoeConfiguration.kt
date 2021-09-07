@@ -17,6 +17,7 @@ class KoeConfiguration(val serverConfig: ServerConfig) {
     fun koeOptions(): KoeOptions = KoeOptions.builder().setGatewayVersion(GatewayVersion.valueOf(
                         serverConfig.gatewayVersion.strip().toUpperCase())).apply {
         log.info("OS: " + System.getProperty("os.name") + ", Arch: " + System.getProperty("os.arch"))
+        log.info("using gatewayVersion: " + serverConfig.gatewayVersion.strip().toUpperCase())
         val os = System.getProperty("os.name")
         val arch = System.getProperty("os.arch")
 
