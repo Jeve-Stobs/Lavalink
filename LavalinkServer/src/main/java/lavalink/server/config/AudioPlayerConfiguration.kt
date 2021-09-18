@@ -1,5 +1,6 @@
 package lavalink.server.config
 
+import com.sedmelluq.discord.lavaplayer.source.bilibili.BilibiliAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager
 import com.sedmelluq.discord.lavaplayer.source.bandcamp.BandcampAudioSourceManager
@@ -90,7 +91,8 @@ class AudioPlayerConfiguration {
         if (sources.isMixer) audioPlayerManager.registerSourceManager(BeamAudioSourceManager())
         if (sources.isHttp) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
         if (sources.isLocal) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
-
+        audioPlayerManager.registerSourceManager(BilibiliAudioSourceManager())
+        
         audioPlayerManager.configuration.isFilterHotSwapEnabled = true
 
         return audioPlayerManager
