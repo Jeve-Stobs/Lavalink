@@ -64,7 +64,7 @@ class SocketServer(
             json.put("op", "playerUpdate")
             json.put("guildId", player.guildId)
             json.put("state", state)
-            json.put("track", Util.toMessage(socketContext, player.getPlayingTrack().getInfo()))
+            json.put("track", Util.toMessage(socketContext, player.getPlayingTrack()))
             socketContext.send(json)
         }
     }
