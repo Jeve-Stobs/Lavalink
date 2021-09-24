@@ -21,7 +21,7 @@
  */
 
 package lavalink.server.io
-
+import lavalink.server.util.Util
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
 import lavalink.server.config.ServerConfig
 import lavalink.server.player.Player
@@ -58,11 +58,13 @@ class SocketServer(
 
             val state = player.state
             val connected = socketContext.getVoiceConnection(player).gatewayConnection?.isOpen == true
+     
             state.put("connected", connected)
 
             json.put("op", "playerUpdate")
             json.put("guildId", player.guildId)
             json.put("state", state)
+            json.put("track", Util.toMessage(socketContext, player.getPlayingTrack().getInfo()))
             socketContext.send(json)
         }
     }
