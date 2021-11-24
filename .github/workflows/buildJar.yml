@@ -23,11 +23,13 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew bootJar
     
-    - name: Upload Lavalink.jar
-      uses: actions/upload-artifact@v2
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-           name: Lavalink Artifact
-           path: ./LavalinkServer/build/libs/Lavalink.jar
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Automatic Lavalink release by its commit"
+          files: ./LavalinkServer/build/libs/Lavalink.jar
            
     - name: Checkout
       uses: actions/checkout@v2
