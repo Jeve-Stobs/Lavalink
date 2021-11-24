@@ -18,7 +18,8 @@ public class AudioSourcesConfig {
     private boolean mixer = true;
     private boolean http = true;
     private boolean local = false;
-
+    private boolean bilibili = true;
+    
     public boolean isYoutube() {
         return youtube;
     }
@@ -81,5 +82,13 @@ public class AudioSourcesConfig {
 
     public void setLocal(boolean local) {
         this.local = local;
+    }
+
+    public boolean isBilibili() {
+        return bilibili;
+    }
+
+    public void setBilibili(boolean bilibili) {
+        this.bilibili = bilibili;
     }
 }

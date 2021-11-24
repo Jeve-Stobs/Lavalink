@@ -91,7 +91,7 @@ class AudioPlayerConfiguration {
         if (sources.isMixer) audioPlayerManager.registerSourceManager(BeamAudioSourceManager())
         if (sources.isHttp) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
         if (sources.isLocal) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
-        audioPlayerManager.registerSourceManager(BilibiliAudioSourceManager())
+        if (sources.isBilibili) audioPlayerManager.registerSourceManager(BilibiliAudioSourceManager())
         
         audioPlayerManager.configuration.isFilterHotSwapEnabled = true
 
