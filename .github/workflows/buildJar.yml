@@ -22,9 +22,12 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew bootJar
-    - name: Checkout
-      uses: actions/checkout@v2
-    - uses: actions/upload-artifact@v2
+    
+    - name: Upload Lavalink.jar
+      uses: actions/upload-artifact@v2
       with:
            name: Lavalink Artifact
-           path: LavalinkServer/build/libs/Lavalink.jar
+           path: ./LavalinkServer/build/libs/Lavalink.jar
+           
+    - name: Checkout
+      uses: actions/checkout@v2
