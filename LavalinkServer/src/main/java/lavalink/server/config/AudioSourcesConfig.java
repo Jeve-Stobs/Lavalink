@@ -19,6 +19,7 @@ public class AudioSourcesConfig {
     private boolean http = true;
     private boolean local = false;
     private boolean bilibili = true;
+    private boolean yandexMusic = true;
     
     public boolean isYoutube() {
         return youtube;
@@ -90,5 +91,13 @@ public class AudioSourcesConfig {
 
     public void setBilibili(boolean bilibili) {
         this.bilibili = bilibili;
+    }
+
+    public boolean isYandex() {
+        return yandexMusic;
+    }
+
+    public void setYandex(boolean yandexMusic) {
+        this.yandexMusic = yandexMusic;
     }
 }
