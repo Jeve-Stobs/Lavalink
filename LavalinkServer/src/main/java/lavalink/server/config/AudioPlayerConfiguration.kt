@@ -90,10 +90,10 @@ class AudioPlayerConfiguration {
         if (sources.isTwitch) audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager())
         if (sources.isVimeo) audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
         if (sources.isMixer) audioPlayerManager.registerSourceManager(BeamAudioSourceManager())
-        if (sources.isHttp) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
-        if (sources.isLocal) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
         if (sources.isBilibili) audioPlayerManager.registerSourceManager(BilibiliAudioSourceManager())
         if (sources.isYandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(true))
+        if (sources.isHttp) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
+        if (sources.isLocal) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
         audioPlayerManager.configuration.isFilterHotSwapEnabled = true
 
         return audioPlayerManager
