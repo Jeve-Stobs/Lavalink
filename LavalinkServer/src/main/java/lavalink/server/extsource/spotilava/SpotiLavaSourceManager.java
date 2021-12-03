@@ -73,7 +73,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
                 }
             JsonBrowser trackData = JsonBrowser.parse(response.getEntity().getContent());
             String title = trackData.get("data").get("title").safeText();
-            String uploader = trackData.get("data").get("artist").values().get(0).safeText();
+            String uploader = trackData.get("data").get("artists").values().get(0).safeText();
             long duration = Integer.parseInt(trackData.get("data").get("duration").text()) * 1000;
             String thumbnailUrl = trackData.get("data").get("image").text();
             return new SpotiLavaAudioTrack(new AudioTrackInfo(title, uploader, duration, trackId, false, getTrackUrl(trackId, "track"), thumbnailUrl), this);
