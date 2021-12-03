@@ -63,19 +63,18 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
         try (HttpInterface httpInterface = getHttpInterface()) {
             try (CloseableHttpResponse response = httpInterface.execute(new HttpGet("https://" + serverConfig.spotiLavaUrl + "/" + trackId))) {
                 int statusCode = response.getStatusLine().getStatusCode();
-                } catch(IOException e) {
-                    if (!HttpClientTools.isSuccessWithContent(statusCode)) {
+                if (!HttpClientTools.isSuccessWithContent(statusCode)) {
                     throw new IOException("Unexpected response code from video info: " + statusCode);
-                } 
+                }
             JsonBrowser trackData = JsonBrowser.parse(response.getEntity().getContent());
             String title = trackData.get("data").get("title").safeText();
             String uploader = trackData.get("data").get("artist").values().get(0).safeText();
             long duration = Integer.parseInt(trackData.get("data").get("duration").text()) * 1000;
             String thumbnailUrl = trackData.get("data").get("image").text();
             return new SpotiLavaAudioTrack(new AudioTrackInfo(title, uploader, duration, trackId, false, getTrackUrl(trackId, "track"), thumbnailUrl), this);
+            }
         } catch (IOException e) {
             throw new FriendlyException("Error occurred when extracting video info.", SUSPICIOUS, e);
-            }
         }
     }
 
