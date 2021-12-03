@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "lavalink.server.spotify")
 @Component
 public class SpotifyConfig {
-    public String? spotiLavaUrl = null;
+    public String spotiLavaUrl = null;
 }
