@@ -2,7 +2,7 @@ package lavalink.server.extsource.spotilava;
 
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpConfigurable;
-import lavalink.server.config.ServerConfig;
+import lavalink.server.config.SpotifyConfig;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.track.AudioReference;
 import com.sedmelluq.discord.lavaplayer.track.AudioItem;
@@ -32,7 +32,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
 
 public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigurable {
     private static final String DOMAIN_REGEX = "^(?:http://|https://|)(?:open\\.|)spotify\\.com/(track|episode)[/:]([A-Za-z0-9]+).*";
-    private final ServerConfig serverConfig;
+    private final SpotifyConfig serverConfig;
     private final HttpInterfaceManager httpInterfaceManager;
     private static final Pattern urlPattern = Pattern.compile(DOMAIN_REGEX);
     private static final Logger log = LoggerFactory.getLogger(SpotiLavaSourceManager.class);
