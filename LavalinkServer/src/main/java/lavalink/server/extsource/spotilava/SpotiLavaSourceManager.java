@@ -56,7 +56,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
         boolean matchFound = urlMatcher.find();
         if (matchFound) {
             if (urlMatcher.group(1).equals("track")) {
-                log.info("Received to load spotify track with id" + urlMatcher.group(2))
+                log.info("Received to load spotify track with id" + urlMatcher.group(2));
                 return loadTrack(urlMatcher.group(2)); 
             } 
             return null;
