@@ -27,6 +27,9 @@ import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.SUSPICIOUS;
+
+
 public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigurable {
     private static final String DOMAIN_REGEX = "^(?:http://|https://|)(?:open\\.|)spotify\\.com/(track|episode)[/:]([A-Za-z0-9]+).*";
     private final ServerConfig serverConfig;
@@ -65,8 +68,8 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
                 }
             JsonBrowser trackData = JsonBrowser.parse(response.getEntity().getContent());
             String title = trackData.get("data").get("title").safeText();
-            String uploader = trackData.get("data").get("artist").get(0).safeText();
-            String duration = Integer.parseInt(trackData.get("data").get("duration").text()) * 1000;
+            String uploader = trackData.get("data").get("artist")[0].safeText();
+            long duration = Integer.parseInt(trackData.get("data").get("duration").text()) * 1000;
             String thumbnailUrl = trackData.get("data").get("image").text();
             return new SpotiLavaAudioTrack(new AudioTrackInfo(title, uploader, duration, trackId, false, getTrackUrl(trackId, "track"), thumbnailUrl), this);
         } catch (IOException e) {
