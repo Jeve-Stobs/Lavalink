@@ -6,6 +6,10 @@ import com.sedmelluq.discord.lavaplayer.tools.io.PersistentHttpStream;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface;
 import com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor;
 import org.slf4j.Logger;
+import lavalink.server.config.ServerConfig;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
+import com.sedmelluq.discord.lavaplayer.source.AudioSourceManager;
 import org.slf4j.LoggerFactory;
 import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
 /**
