@@ -56,7 +56,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
         }
     }
 
-     @Override
+    @Override
     public boolean isTrackEncodable(AudioTrack track) {
         return true;
     }
@@ -94,6 +94,6 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
     }
 
     private static String getWatchUrl(String videoId, String type) {
-        return "https://open.spotify.com/" + type "/" + videoId;
+        return "https://open.spotify.com/" + type + "/" + videoId;
     }
 }
