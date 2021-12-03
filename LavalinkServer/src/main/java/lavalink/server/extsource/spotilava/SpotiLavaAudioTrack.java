@@ -18,7 +18,7 @@ import java.net.URI;
  */
 public class SpotiLavaAudioTrack extends DelegatedAudioTrack {
     private static final Logger log = LoggerFactory.getLogger(SpotiLavaAudioTrack.class);
-    private final SpotifyConfig serverConfig;
+    private final SpotifyConfig serverConfig = new SpotifyConfig();
     private final SpotiLavaSourceManager sourceManager;
 
     /**
