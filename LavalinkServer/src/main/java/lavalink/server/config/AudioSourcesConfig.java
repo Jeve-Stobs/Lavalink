@@ -20,7 +20,8 @@ public class AudioSourcesConfig {
     private boolean local = false;
     private boolean bilibili = true;
     private boolean yandexMusic = true;
-    
+    private boolean lavaSpotify = false;
+
     public boolean isYoutube() {
         return youtube;
     }
@@ -99,5 +100,13 @@ public class AudioSourcesConfig {
 
     public void setYandex(boolean yandexMusic) {
         this.yandexMusic = yandexMusic;
+    }
+
+    public boolean isLavaSpotify() {
+        return lavaSpotify;
+    }
+    
+    public void setLavaSpotify(boolean lavaSpotify) {
+        this.lavaSpotify = lavaSpotify;
     }
 }

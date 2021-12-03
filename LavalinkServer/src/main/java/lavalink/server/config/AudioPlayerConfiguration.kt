@@ -1,5 +1,6 @@
 package lavalink.server.config
 
+import lavalink.server.extsource.spotilava.SpotiLavaSourceManager
 import com.sedmelluq.discord.lavaplayer.source.bilibili.BilibiliAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexMusicAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
@@ -92,6 +93,7 @@ class AudioPlayerConfiguration {
         if (sources.isMixer) audioPlayerManager.registerSourceManager(BeamAudioSourceManager())
         if (sources.isBilibili) audioPlayerManager.registerSourceManager(BilibiliAudioSourceManager())
         if (sources.isYandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(true))
+        if (sources.isLavaSpotify) audioPlayerManager.registerSourceManager(SpotiLavaSourceManager())
         if (sources.isHttp) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
         if (sources.isLocal) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
         audioPlayerManager.configuration.isFilterHotSwapEnabled = true
