@@ -60,13 +60,13 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
     }
 
     private AudioTrack loadTrack(String trackId) {
-        try {
-            HttpInterface httpInterface = getHttpInterface()
+        try (HttpInterface httpInterface = getHttpInterface()) {
             try (CloseableHttpResponse response = httpInterface.execute(new HttpGet("https://" + serverConfig.spotiLavaUrl + "/" + trackId))) {
                 int statusCode = response.getStatusLine().getStatusCode();
-                if (!HttpClientTools.isSuccessWithContent(statusCode)) {
+                } catch(IOException e) {
+                    if (!HttpClientTools.isSuccessWithContent(statusCode)) {
                     throw new IOException("Unexpected response code from video info: " + statusCode);
-                }
+                } 
             JsonBrowser trackData = JsonBrowser.parse(response.getEntity().getContent());
             String title = trackData.get("data").get("title").safeText();
             String uploader = trackData.get("data").get("artist").values().get(0).safeText();
