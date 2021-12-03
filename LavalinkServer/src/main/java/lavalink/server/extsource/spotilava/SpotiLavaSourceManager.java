@@ -48,13 +48,18 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
 
     @Override
     public AudioItem loadItem(DefaultAudioPlayerManager manager, AudioReference reference) {
-        if (spotiLavaUrl == null) {
+        if (spotiLavaUrl.isEmpty()) {
             log.warn("SpotiLavaSource is enabled but no spotiLavaUrl set, returning as null");
             return null;
         }
         Matcher urlMatcher = urlPattern.matcher(reference.identifier);
-        if (urlMatcher.group(1).equals("track")) {
-            return loadTrack(urlMatcher.group(2)); 
+        boolean matchFound = urlMatcher.find();
+        if (matchFound) {
+            if (urlMatcher.group(1).equals("track")) {
+                log.info("Received to load spotify track with id" + urlMatcher.group(2))
+                return loadTrack(urlMatcher.group(2)); 
+            } 
+            return null;
         }
         return null;
     }
