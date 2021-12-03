@@ -40,5 +40,5 @@ class ServerConfig {
     var isSoundcloudSearchEnabled = true
     var ratelimit: RateLimitConfig? = null
     var gatewayVersion: String = "V4"
-    public var spotiLavaUrl: String? = null
+    var spotiLavaUrl: String? = null
 }

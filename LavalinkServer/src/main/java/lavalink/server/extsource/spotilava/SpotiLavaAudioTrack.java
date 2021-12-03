@@ -18,9 +18,7 @@ import java.net.URI;
  */
 public class SpotiLavaAudioTrack extends DelegatedAudioTrack {
     private static final Logger log = LoggerFactory.getLogger(SpotiLavaAudioTrack.class);
-    private final ServerConfig serverConfig = new ServerConfig();
     private final SpotiLavaSourceManager sourceManager;
-
     /**
     * @param trackInfo Track info
     * @param sourceManager Source manager which was used to find this track
@@ -33,11 +31,11 @@ public class SpotiLavaAudioTrack extends DelegatedAudioTrack {
      @Override
      public void process(LocalAudioTrackExecutor localExecutor) throws Exception {
          try (HttpInterface httpInterface = sourceManager.getHttpInterface()) {
-             if (serverConfig.spotiLavaUrl == null) {
+             if (sourceManager.spotiLavaUrl == null) {
                  log.warn("SpotiLavaSource is enabled but no spotiLavaUrl set, returning as null");
                  throw new Exception("SpotiLavaSource is enabled but no spotiLavaUrl set, but trying to playing track");
              }
-             String playbackUrl = "https://" + serverConfig.spotiLavaUrl + "/" + trackInfo.identifier + "/listen";
+             String playbackUrl = "https://" + sourceManager.spotiLavaUrl + "/" + trackInfo.identifier + "/listen";
              log.debug("Starting Spotify track from URL: {}", playbackUrl);
              try (PersistentHttpStream stream = new PersistentHttpStream(httpInterface, new URI(playbackUrl), null)) {
                  processDelegate(new OggAudioTrack(trackInfo, stream), localExecutor);

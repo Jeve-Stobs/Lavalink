@@ -93,7 +93,7 @@ class AudioPlayerConfiguration {
         if (sources.isMixer) audioPlayerManager.registerSourceManager(BeamAudioSourceManager())
         if (sources.isBilibili) audioPlayerManager.registerSourceManager(BilibiliAudioSourceManager())
         if (sources.isYandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(true))
-        if (sources.isLavaSpotify) audioPlayerManager.registerSourceManager(SpotiLavaSourceManager())
+        if (sources.isLavaSpotify) audioPlayerManager.registerSourceManager(SpotiLavaSourceManager(serverConfig.spotiLavaUrl))
         if (sources.isHttp) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
         if (sources.isLocal) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
         audioPlayerManager.configuration.isFilterHotSwapEnabled = true
