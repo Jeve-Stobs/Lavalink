@@ -6,7 +6,7 @@ import com.sedmelluq.discord.lavaplayer.tools.io.PersistentHttpStream;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface;
 import com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor;
 import org.slf4j.Logger;
-import lavalink.server.config.SpotifyConfig;
+import lavalink.server.config.ServerConfig;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManager;
@@ -18,7 +18,7 @@ import java.net.URI;
  */
 public class SpotiLavaAudioTrack extends DelegatedAudioTrack {
     private static final Logger log = LoggerFactory.getLogger(SpotiLavaAudioTrack.class);
-    private final SpotifyConfig serverConfig = new SpotifyConfig();
+    private final ServerConfig serverConfig = new ServerConfig();
     private final SpotiLavaSourceManager sourceManager;
 
     /**
