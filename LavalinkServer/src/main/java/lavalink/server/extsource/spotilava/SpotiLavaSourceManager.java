@@ -48,7 +48,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
 
     @Override
     public AudioItem loadItem(DefaultAudioPlayerManager manager, AudioReference reference) {
-        if (ServerConfig.spotiLavaUrl == null) {
+        if (serverConfig.spotiLavaUrl == null) {
             log.warn("SpotiLavaSource is enabled but no spotiLavaUrl set, returning as null");
             return null;
         }
@@ -61,7 +61,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
 
     private AudioTrack loadTrack(String trackId) {
         try (HttpInterface httpInterface = getHttpInterface()) {
-            try (CloseableHttpResponse response = httpInterface.execute(new HttpGet("https://" + ServerConfig.spotiLavaUrl + "/" + trackId))) {
+            try (CloseableHttpResponse response = httpInterface.execute(new HttpGet("https://" + serverConfig.spotiLavaUrl + "/" + trackId))) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (!HttpClientTools.isSuccessWithContent(statusCode)) {
                     throw new IOException("Unexpected response code from video info: " + statusCode);

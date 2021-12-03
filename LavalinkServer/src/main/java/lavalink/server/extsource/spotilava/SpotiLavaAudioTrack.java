@@ -33,7 +33,7 @@ public class SpotiLavaAudioTrack extends DelegatedAudioTrack {
      @Override
      public void process(LocalAudioTrackExecutor localExecutor) throws Exception {
          try (HttpInterface httpInterface = sourceManager.getHttpInterface()) {
-             if (ServerConfig.spotiLavaUrl == null) {
+             if (serverConfig.spotiLavaUrl == null) {
                  log.warn("SpotiLavaSource is enabled but no spotiLavaUrl set, returning as null");
                  throw new Exception("SpotiLavaSource is enabled but no spotiLavaUrl set, but trying to playing track");
              }
