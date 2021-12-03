@@ -60,7 +60,8 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
     }
 
     private AudioTrack loadTrack(String trackId) {
-        try (HttpInterface httpInterface = getHttpInterface()) {
+        try {
+            HttpInterface httpInterface = getHttpInterface()
             try (CloseableHttpResponse response = httpInterface.execute(new HttpGet("https://" + serverConfig.spotiLavaUrl + "/" + trackId))) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (!HttpClientTools.isSuccessWithContent(statusCode)) {
