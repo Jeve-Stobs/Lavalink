@@ -1,6 +1,5 @@
 package lavalink.server.extsource.spotilava;
 
-import com.sedmelluq.discord.lavaplayer.container.mpeg.MpegAudioTrack;
 import com.sedmelluq.discord.lavaplayer.container.ogg.OggAudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.DelegatedAudioTrack;
 import com.sedmelluq.discord.lavaplayer.tools.io.PersistentHttpStream;
@@ -39,7 +38,7 @@ public class SpotiLavaAudioTrack extends DelegatedAudioTrack {
              String playbackUrl = "https://" + sourceManager.spotiLavaUrl + "/" + trackInfo.identifier + "/listen";
              log.debug("Starting Spotify track from URL: {}", playbackUrl);
              try (PersistentHttpStream stream = new PersistentHttpStream(httpInterface, new URI(playbackUrl), null)) {
-                 processDelegate(new MpegAudioTrack(trackInfo, stream), localExecutor);
+                 processDelegate(new OggAudioTrack(trackInfo, stream), localExecutor);
             }
         }
     }
