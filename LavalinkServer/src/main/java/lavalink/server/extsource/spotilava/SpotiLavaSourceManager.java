@@ -51,8 +51,9 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
             String duration = Integer.parseInt(trackData.get("data").get("duration").text()) * 1000;
             String thumbnailUrl = trackData.get("data").get("image").text();
             return new SpotiLavaAudioTrack(new AudioTrackInfo(title, uploader, duration, trackId, false, getTrackUrl(trackId, "track"), thumbnailUrl), this);
-    } catch (IOException e) {
-        throw new FriendlyException("Error occurred when extracting video info.", SUSPICIOUS, e);
+        } catch (IOException e) {
+            throw new FriendlyException("Error occurred when extracting video info.", SUSPICIOUS, e);
+            }
         }
     }
 
