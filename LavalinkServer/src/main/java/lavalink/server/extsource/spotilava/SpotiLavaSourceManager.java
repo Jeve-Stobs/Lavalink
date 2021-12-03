@@ -53,7 +53,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
             return null;
         }
         Matcher urlMatcher = urlPattern.matcher(reference.identifier);
-        if (urlMatcher.group(1) == "track") {
+        if (urlMatcher.group(1).equals("track")) {
             return loadTrack(urlMatcher.group(2)); 
         }
         return null;
