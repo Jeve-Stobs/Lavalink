@@ -16,8 +16,11 @@ import java.util.function.Function;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterfaceManager;
+import com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools;
+import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
@@ -109,7 +112,7 @@ public class SpotiLavaSourceManager implements AudioSourceManager, HttpConfigura
         httpInterfaceManager.configureBuilder(configurator);
     }
 
-    private static String getWatchUrl(String videoId, String type) {
+    private static String getTrackUrl(String videoId, String type) {
         return "https://open.spotify.com/" + type + "/" + videoId;
     }
 }
