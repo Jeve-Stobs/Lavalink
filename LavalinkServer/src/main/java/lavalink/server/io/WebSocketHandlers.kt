@@ -30,9 +30,12 @@ class WebSocketHandlers(private val contextMap: Map<String, SocketContext>) {
         //discord sometimes send a partial server update missing the endpoint, which can be ignored.
         endpoint ?: return
 
+        //clear old connection
+        context.koe.destroyConnection(guildId)
+
         val player = context.getPlayer(guildId)
         val conn = context.getVoiceConnection(player)
-        conn.connect(VoiceServerInfo(sessionId, endpoint, token)).thenRun {
+        conn.connect(VoiceServerInfo(sessionId, endpoint, token)).whenComplete { _, _ ->
             player.provideTo(conn)
         }
     }
